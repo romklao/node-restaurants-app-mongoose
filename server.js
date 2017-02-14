@@ -15,50 +15,50 @@ const app = express();
 app.use(bodyParser.json());
 
 
-// GET requests to /restaurants => return 10 restaurants
-// app.get('/restaurants', (req, res) => {
-//   Restaurant
-//     .find()
-//     // we're limiting because restaurants db has > 25,000
-//     // documents, and that's too much to process/return
-//     .limit(10)
-//     // `exec` returns a promise
-//     .exec()
-//     // success callback: for each restaurant we got back, we'll
-//     // call the `.apiRepr` instance method we've created in
-//     // models.js in order to only expose the data we want the API return.
-//     .then(restaurants => {
-//       res.json({
-//         restaurants: restaurants.map(
-//           (restaurant) => restaurant.apiRepr())
-//       });
-//     })
-//     .catch(
-//       err => {
-//         console.error(err);
-//         res.status(500).json({message: 'Internal server error'});
-//     });
-// });
-
+GET requests to /restaurants => return 10 restaurants
 app.get('/restaurants', (req, res) => {
-    const filters = {};
-    const queryableFields = ['cuisine', 'borough'];
-    queryableFields.forEach(field => {
-        if (req.query[field]) {
-            filters[field] = req.query[field];
-        }
+  Restaurant
+    .find()
+    // we're limiting because restaurants db has > 25,000
+    // documents, and that's too much to process/return
+    .limit(10)
+    // `exec` returns a promise
+    .exec()
+    // success callback: for each restaurant we got back, we'll
+    // call the `.apiRepr` instance method we've created in
+    // models.js in order to only expose the data we want the API return.
+    .then(restaurants => {
+      res.json({
+        restaurants: restaurants.map(
+          (restaurant) => restaurant.apiRepr())
+      });
+    })
+    .catch(
+      err => {
+        console.error(err);
+        res.status(500).json({message: 'Internal server error'});
     });
-    Restaurant
-        .find(filters)
-        .exec()
-        .then(Restaurants => res.json(
-            Restaurants.map(restaurant => restaurant.apiRepr())
-        ))
-        .catch(err => {
-            console.error(err);
-            res.status(500).json({message: 'Internal server error'})
-        });
 });
+
+// app.get('/restaurants', (req, res) => {
+//     const filters = {};
+//     const queryableFields = ['cuisine', 'borough'];
+//     queryableFields.forEach(field => {
+//         if (req.query[field]) {
+//             filters[field] = req.query[field];
+//         }
+//     });
+//     Restaurant
+//         .find(filters)
+//         .exec()
+//         .then(Restaurants => res.json(
+//             Restaurants.map(restaurant => restaurant.apiRepr())
+//         ))
+//         .catch(err => {
+//             console.error(err);
+//             res.status(500).json({message: 'Internal server error'})
+//         });
+// });
 
 // can also request by ID
 app.get('/restaurants/:id', (req, res) => {
