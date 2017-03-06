@@ -2,3 +2,11 @@ language: node_js
 node_js: node
 services:
 - mongodb
+deploy:
+  provider: heroku
+  api_key:
+    secure: QOHNJAB/Tvpjx/aHvbKIZpUAS65uLQ1TwWM0f2PMbR8feA89gGII9Rj9GDo1ATDGIEr50MN9WTspEGvN2DB7D6/3oS1Pr+YUp7GOoglUu8WWkpsIJL9fdEvUFHExCDAVkLzjU/H4z1vKI6IML6K7xnhie5s9pBVfAU2y9TFIj8EEfznAKFc2GnWWhfcooQSVszEeTtkei5W2H++/S0E6YBeyYFsQCiUvRaHVQfVqT5cL7+NypeSO+7Qa/4MdBZGtg4bcGyVopgD0hVgsOog3ViA510iBP47CXdF6i2mE1FRw+SJJ9iNpy1qfXTd1rkR/hkgoKz3o2LpqfomJwp7P28dGhHJ7Ko7UxbWlm0w6Rg2ALkDbXc0h1FH98De5NvFlAwU6nOCi7SxAHRuPjlweEhiZHy/mFe09hLDcQ+bz8ewWU0+GNvurQnkJ0hyD7pJ2izQLjdwvJWhUeb0atNWriooEq4JUoCgka+J43eSAC+faNgd/xgR+cH9t5kgqJy7Cn1GgAujUpq6jmv6S/dMyW7vdbad9+r6E5k2mPRqwFo7AecUBfyDcGjNCRtmW7sma0cGGYdUcIlsWUNA6cE+nmQIYPJkafBLnUe6DRQDv5bb2LQe7y8bvUe7SSRgkUr5NeNxUaePT+WweltEV48+s0QB5WY1DgCsStTO2zVT8fpM=
+  app: cryptic-caverns-69572
+  on:
+    repo: romklao/node-restaurants-app-mongoose
+    branch: feature/with-tests
