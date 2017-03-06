@@ -108,7 +108,7 @@ describe('Restaurants API resource', function() {
 
     it('should return all existing restaurants', function() {
       // strategy:
-      //    1. get back all restaurants returned by by GET request to `/restaurants`
+      //    1. get back all restaurants returned by GET request to `/restaurants`
       //    2. prove res has right status, data type
       //    3. prove the number of restaurants we got back is equal to number
       //       in db.
